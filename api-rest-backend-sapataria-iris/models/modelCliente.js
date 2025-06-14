@@ -8,7 +8,7 @@ const connection = require('../database/database.js');
 const modelCliente = connection.define(
     'clientes',
     {
-        id_cliente: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -22,6 +22,10 @@ const modelCliente = connection.define(
             type: Sequelize.STRING(20),
             allowNull: false,
           },
+          endereco: {
+            type: Sequelize.STRING(100),
+            allowNull: true,
+          },
           descricao: {
             type: Sequelize.STRING(50),
             allowNull: true,
@@ -30,14 +34,13 @@ const modelCliente = connection.define(
             type: Sequelize.DECIMAL(10, 2),
             allowNull: false,
           },
-          data_compra: {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.fn('now'),
-            allowNull: true,
-          },
-          valor_entrada: {
+          entrada: {
             type: Sequelize.DECIMAL(10, 2),
             defaultValue: 0,
+            allowNull: true,
+          },
+          imagem:{
+            type: Sequelize.STRING(100),
             allowNull: true,
           }
     }
